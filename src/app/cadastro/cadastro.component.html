@@ -1,0 +1,83 @@
+<mat-card>
+    <!-- <p>cadastro works!</p> -->
+
+    <mat-form-field appearance="fill">
+        <mat-label>Campeonato</mat-label>
+        <mat-select [(value)]="campeonatoSelecionado">
+            <mat-option *ngFor="let campeonato of campeonatos" [value]="campeonato">
+                {{campeonato.nomeCampeonato}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="form-filtro">
+        <form [formGroup]="filtroForm" (ngSubmit)="onCadastro()">
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 1</mat-label>
+                <mat-select formControlName="jogador1">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 1</mat-label>
+                <mat-select formControlName="time1">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Gols 1</mat-label>
+                <mat-select formControlName="gols1">
+                    <mat-option *ngFor="let gols of [0,1,2,3,4,5,6,7,8,9]" [value]="gols">
+                        {{gols}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            
+
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 2</mat-label>
+                <mat-select formControlName="jogador2">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 2</mat-label>
+                <mat-select formControlName="time2">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Gols 2</mat-label>
+                <mat-select formControlName="gols2">
+                    <mat-option *ngFor="let gols of [0,1,2,3,4,5,6,7,8,9]" [value]="gols">
+                        {{gols}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Data</mat-label>
+                <input matInput formControlName="data" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+            <button color="primary" mat-mini-fab (submit)="onCadastro()" type="submit">
+                <mat-icon>add</mat-icon>
+            </button>
+        </form>
+    </div>
+</mat-card>

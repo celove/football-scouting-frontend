@@ -1,0 +1,108 @@
+<mat-card>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Campeonato</mat-label>
+        <mat-select [(value)]="campeonatoSelecionado">
+            <mat-option *ngFor="let campeonato of campeonatos" [value]="campeonato">
+                {{campeonato.nomeCampeonato}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="form-filtro">
+        <form [formGroup]="filtroForm" (ngSubmit)="onFiltro()">
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 1</mat-label>
+                <mat-select formControlName="jogador1">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 1</mat-label>
+                <mat-select formControlName="time1">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 2</mat-label>
+                <mat-select formControlName="jogador2">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 2</mat-label>
+                <mat-select formControlName="time2">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 3</mat-label>
+                <mat-select formControlName="jogador3">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 3</mat-label>
+                <mat-select formControlName="time3">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 4</mat-label>
+                <mat-select formControlName="jogador4">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 4</mat-label>
+                <mat-select formControlName="time4">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Jogador 5</mat-label>
+                <mat-select formControlName="jogador5">
+                    <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                        {{jogador}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Time 5</mat-label>
+                <mat-select formControlName="time5">
+                    <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                        {{time}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button color="primary" mat-mini-fab (submit)="onFiltro()" type="submit">
+                <mat-icon>youtube_searched_for</mat-icon>
+            </button>
+        </form>
+    </div>
+</mat-card>

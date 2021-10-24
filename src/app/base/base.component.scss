@@ -1,0 +1,36 @@
+.has-text-centered {
+  display     : flex;
+  margin-right: 20px;
+  margin-left : 20px;
+  height      : 38px;
+}
+
+.container {
+  display        : flex;
+  justify-content: space-between;
+  flex-wrap      : wrap;
+  width          : 100%;
+  margin-top     : 6px;
+  position       : fixed;
+  z-index        : 2;
+
+}
+
+.footer {
+  height          : 38px;
+  bottom          : 0;
+  background-color: #3f51b5;
+  position        : fixed;
+  width           : 100%;
+}
+
+.body-container {
+  height: calc(100% - 64px) !important;
+}
+
+.texto-footer {
+  font-size    : large;
+  font-family  : monospace;
+  place-self   : center;
+  padding-right: 12px;
+}

@@ -1,0 +1,9 @@
+<mat-card class="card-grafico">
+    <button mat-raised-button color="primary" (click)="onDialog()">Escolha o campeonato</button>
+
+    <ngx-charts-bar-vertical *ngIf="single.length > 0" [view]="view" [scheme]="colorScheme" [results]="single"
+        [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+</mat-card>

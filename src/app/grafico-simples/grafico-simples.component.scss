@@ -1,0 +1,12 @@
+.card-grafico {
+    display         : flex;
+    background-color: #f1f1f1;
+    flex-direction  : column;
+    color           : #858585;
+    margin-bottom   : 20px;
+    margin-left     : 20px;
+    width           : fit-content;
+    min-width       : 600px;
+    height          : 95%;
+    justify-content : space-between;
+}

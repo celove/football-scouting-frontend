@@ -1,0 +1,125 @@
+<mat-card class="card-principal">
+    <div class="div-tabela-filtros">
+        <h2 class="titulo"> Filtrar por jogador com determinado time </h2>
+        <div class="filtro">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Campeonato</mat-label>
+                <mat-select [(value)]="campeonatoSelecionado">
+                    <mat-option *ngFor="let campeonato of campeonatos" [value]="campeonato">
+                        {{campeonato.nomeCampeonato}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="form-filtro">
+                <form [formGroup]="filtroForm" (ngSubmit)="onFilter()">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Jogador 1</mat-label>
+                        <mat-select [(ngModel)]="jogador1" formControlName="jogador1">
+                            <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                                {{jogador}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Time 1</mat-label>
+                        <mat-select [(ngModel)]="time1" formControlName="time1">
+                            <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                                {{time}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <button color="primary" *ngIf="!isAdd" mat-mini-fab (click)="onChangeAdd()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+
+                    <button color="primary" *ngIf="isAdd" mat-mini-fab (click)="onChangeAdd()">
+                        <mat-icon>remove_circle_outline</mat-icon>
+                    </button>
+
+                    <mat-form-field *ngIf="isAdd" appearance="fill">
+                        <mat-label>Jogador 2</mat-label>
+                        <mat-select [(ngModel)]="jogador2" formControlName="jogador2">
+                            <mat-option *ngFor="let jogador of jogadores" [value]="jogador">
+                                {{jogador}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="isAdd" appearance="fill">
+                        <mat-label>Time 2</mat-label>
+                        <mat-select [(ngModel)]="time2" formControlName="time2">
+                            <mat-option *ngFor="let time of campeonatoSelecionado.nomeTimes" [value]="time">
+                                {{time}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <button color="primary" mat-mini-fab (submit)="onFilter()" type="submit">
+                        <mat-icon>youtube_searched_for</mat-icon>
+                    </button>
+
+                    <button color="primary" mat-mini-fab (click)="onReset()" type="submit">
+                        <mat-icon>not_interested</mat-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="titulo"> Jogos realizados </h2>
+
+        <div class="example-container mat-elevation-z8">
+            <table mat-table [dataSource]="jogo">
+
+                <!-- data Column -->
+                <ng-container matColumnDef="dataFormatado">
+                    <th mat-header-cell *matHeaderCellDef> data </th>
+                    <td mat-cell *matCellDef="let element"> {{element.dataFormatado}} </td>
+                </ng-container>
+
+                <!-- Jogador1 Column -->
+                <ng-container matColumnDef="jogador1">
+                    <th mat-header-cell *matHeaderCellDef> Jogador </th>
+                    <td mat-cell *matCellDef="let element"> {{element.jogador1}} </td>
+                </ng-container>
+
+                <!-- Gols1 Column -->
+                <ng-container matColumnDef="gols1">
+                    <th mat-header-cell *matHeaderCellDef> Gols </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gols1}} </td>
+                </ng-container>
+
+                <!-- Time1 Column -->
+                <ng-container matColumnDef="time1">
+                    <th mat-header-cell *matHeaderCellDef> Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time1}} </td>
+                </ng-container>
+
+                <!-- Jogador2 Column -->
+                <ng-container matColumnDef="jogador2">
+                    <th mat-header-cell *matHeaderCellDef> Jogador </th>
+                    <td mat-cell *matCellDef="let element"> {{element.jogador2}} </td>
+                </ng-container>
+
+                <!-- Time2 Column -->
+                <ng-container matColumnDef="time2">
+                    <th mat-header-cell *matHeaderCellDef> Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.time2}} </td>
+                </ng-container>
+
+                <!-- Gols2 Column -->
+                <ng-container matColumnDef="gols2">
+                    <th mat-header-cell *matHeaderCellDef> Gols </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gols2}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="nomeColunas; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: nomeColunas;"></tr>
+            </table>
+        </div>
+    </div>
+    <div class="div-grafico">
+        <app-grafico-simples></app-grafico-simples>
+    </div>
+</mat-card>
